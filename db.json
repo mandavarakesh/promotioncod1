@@ -1,0 +1,639 @@
+{
+  "promoList": [
+    {
+      "templateID": "Discount_By_Cart_Total",
+      "templateName": "Discount By Cart Total"
+    },
+    {
+      "templateID": "Discount_For_Customer_Group",
+      "templateName": "Discount For Customer Group"
+    },
+    {
+      "templateID": "Promotion_with_Coupon_And_Jouney_Type",
+      "templateName": "Promotion with Coupon And Jouney Type"
+    }
+  ],
+  "Discount_By_Cart_Total": {
+    "basic": {
+      "fields": [
+        {
+          "type": "posts",
+          "id": "promotionname",
+          "label": "Promotion Name",
+          "validationPattern": "",
+          "validationMessage": "Please enter a valid value",
+          "manditoryType": "required",
+          "fieldType": "text",
+          "defaultValue": null
+        },
+        {
+          "type": "posts",
+          "id": "stackable",
+          "label": "Stackable",
+          "validationPattern": "",
+          "validationMessage": "",
+          "fieldType": "boolean",
+          "manditoryType": "required",
+          "defaultValue": null
+        },
+        {
+          "type": "posts",
+          "id": "promotionmodule",
+          "fieldType": "text",
+          "label": "Promotion Module",
+          "validationPattern": "^[A-Za-z0-9]+$",
+          "validationMessage": "Please enter a valid value",
+          "manditoryType": "required",
+          "defaultValue": null
+        },
+        {
+          "type": "posts",
+          "id": "priority",
+          "label": "Priority",
+          "validationPattern": "^[A-Za-z0-9]+$",
+          "validationMessage": "Please enter a valid value",
+          "manditoryType": "required",
+          "fieldType": "text",
+          "defaultValue": null
+        },
+        {
+          "type": "posts",
+          "id": "startDate",
+          "fieldType": "date",
+          "label": "Start Date",
+          "validationPattern": "^[A-Za-z0-9]+$",
+          "validationMessage": "Please enter a valid value",
+          "manditoryType": "",
+          "defaultValue": null
+        },
+        {
+          "type": "posts",
+          "id": "endDate",
+          "fieldType": "date",
+          "label": "end Date",
+          "validationPattern": "^[A-Za-z0-9]+$",
+          "validationMessage": "Please enter a valid value",
+          "manditoryType": "",
+          "defaultValue": null
+        }
+      ]
+    },
+    "rules": {
+      "fields": [
+        {
+          "id": "cart_total",
+          "label": "Cart Total",
+          "fields": [
+            {
+              "id": "operators",
+              "label": "Operators",
+              "fieldType": "select",
+              "subFields": [
+                {
+                  "condition": "greaterThan",
+                  "conditionFields": [
+                    {
+                      "id": "total_amount",
+                      "label": "Total Amount",
+                      "fieldType": "text",
+                      "fieldOptions": [],
+                      "manditoryType": "required",
+                      "validationPattern": "^\\d*\\.?\\d+$",
+                      "validationMessage": "Please enter a valid value",
+                      "defaultValue": null
+                    }
+                  ]
+                },
+                {
+                  "condition": "greaterThanEqual",
+                  "conditionFields": [
+                    {
+                      "id": "total_amount",
+                      "label": "Total Amount",
+                      "fieldType": "text",
+                      "fieldOptions": [],
+                      "manditoryType": "required",
+                      "validationPattern": "^\\d*\\.?\\d+$",
+                      "validationMessage": "Please enter a valid value",
+                      "defaultValue": null
+                    }
+                  ]
+                },
+                {
+                  "condition": "between",
+                  "conditionFields": [
+                    {
+                      "id": "min_amount",
+                      "label": "Min Amount",
+                      "fieldType": "text",
+                      "fieldOptions": [],
+                      "manditoryType": "required",
+                      "validationPattern": "^\\d*\\.?\\d+$",
+                      "validationMessage": "Please enter a valid value",
+                      "defaultValue": null
+                    },
+                    {
+                      "id": "max_amount",
+                      "label": "Max Amount",
+                      "fieldType": "text",
+                      "fieldOptions": [],
+                      "manditoryType": "required",
+                      "validationPattern": "^\\d*\\.?\\d+$",
+                      "validationMessage": "Please enter a valid value",
+                      "defaultValue": null
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": [
+                {
+                  "value": "greaterThan",
+                  "title": ">"
+                },
+                {
+                  "value": "greaterThanEqual",
+                  "title": ">="
+                },
+                {
+                  "value": "between",
+                  "title": "between"
+                }
+              ],
+              "manditoryType": "required",
+              "defaultValue": null
+            }
+          ],
+          "valueType": "string"
+        },
+        {
+          "id": "category",
+          "label": "Category",
+          "fields": [
+            {
+              "id": "category",
+              "label": "Category",
+              "fieldType": "text",
+              "manditoryType": "required",
+              "validationPattern": "^\\d*\\.?\\d+$",
+              "validationMessage": "Please enter a valid value",
+              "defaultValue": "default cat"
+            }
+          ],
+          "valueType": "string"
+        }
+      ]
+    },
+    "action": {
+      "fields": [
+        {
+          "id": "discount",
+          "label": "Discount",
+          "valueType": "string",
+          "fields": [
+            {
+              "id": "cart_total_Discount",
+              "label": "Discount",
+              "fieldType": "text",
+              "manditoryType": "required",
+              "validationPattern": "^\\d*\\.?\\d+$",
+              "validationMessage": "Please enter a valid value",
+              "defaultValue": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Discount_For_Customer_Group": {
+    "templateID": 13,
+    "templateName": "Percentage discount on cart on Cart total for Coupon code",
+    "drlRuleText": null,
+    "formFields": [
+      {
+        "id": 1,
+        "fieldId": "cart_total",
+        "name": "Cart Total",
+        "operators": [
+          {
+            "id": 2,
+            "fieldId": "amount",
+            "name": "amount",
+            "value": null,
+            "required": false,
+            "fieldType": null,
+            "linked_Operator": "12"
+          },
+          {
+            "id": 3,
+            "fieldId": "cart_total_value",
+            "name": "Cart Total Value",
+            "value": null,
+            "required": false,
+            "fieldType": null
+          },
+          {
+            "id": "12",
+            "fieldId": "op",
+            "name": "Operator",
+            "value": null,
+            "required": false,
+            "fieldType": null
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "fieldId": "cop_code",
+        "name": "Coupon Code",
+        "operators": [
+          {
+            "id": 5,
+            "fieldId": "qual_coup",
+            "name": "Qualifying coupons",
+            "value": null,
+            "required": false,
+            "fieldType": null
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": 6,
+        "fieldId": "perceetn_disc",
+        "name": "Percentage discount on cart",
+        "label": null,
+        "actionOperators": [
+          {
+            "id": 7,
+            "fieldId": "per_discou_val",
+            "name": "Percentage discount value",
+            "value": null,
+            "required": false,
+            "fieldType": null
+          },
+          {
+            "id": 8,
+            "fieldId": "max_disc",
+            "name": "Max discount cap",
+            "value": null,
+            "required": false,
+            "fieldType": null
+          }
+        ]
+      }
+    ]
+  },
+  "Promotion_with_Coupon_And_Jouney_Type": {
+    "templateID": 4,
+    "templateName": "Fixed discount on cart on Cart Total",
+    "drlRuleText": "Cart(amount amount_operator amount_value && currencyIso currencyIso_operator currencyIso_value)",
+    "code": "fixedDiscountOnCartOnCartTotal",
+    "conditionFields": [
+      {
+        "id": 4,
+        "name": "Cart Total",
+        "conditionId": "cartTotal",
+        "formFields": [
+          {
+            "id": 18,
+            "name": "Amount Operator",
+            "fieldId": "amountOperator",
+            "fieldType": "enum",
+            "required": true,
+            "linkedOperator": null,
+            "options": [
+              {
+                "id": 33,
+                "value": "<",
+                "name": "<"
+              },
+              {
+                "id": 34,
+                "value": "<=",
+                "name": "<="
+              },
+              {
+                "id": 35,
+                "value": ">",
+                "name": ">"
+              },
+              {
+                "id": 36,
+                "value": "=",
+                "name": "="
+              },
+              {
+                "id": 37,
+                "value": ">=",
+                "name": ">="
+              },
+              {
+                "id": 38,
+                "value": "!=",
+                "name": "!="
+              }
+            ]
+          },
+          {
+            "id": 16,
+            "name": "Amount",
+            "fieldId": "amount",
+            "fieldType": "Integer",
+            "required": true,
+            "linkedOperator": "amountOperator",
+            "options": []
+          },
+          {
+            "id": 17,
+            "name": "Curency",
+            "fieldId": "curency",
+            "fieldType": "enum",
+            "required": true,
+            "linkedOperator": null,
+            "options": [
+              {
+                "id": 31,
+                "value": "SGD",
+                "name": "SGD"
+              },
+              {
+                "id": 32,
+                "value": "USD",
+                "name": "USD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actionFields": [
+      {
+        "id": 4,
+        "actionId": "fixedDisountOnCart",
+        "name": "Fixed disount on cart",
+        "formFields": [
+          {
+            "id": 19,
+            "name": "Amount",
+            "fieldId": "amount",
+            "fieldType": "Integer",
+            "required": true,
+            "linkedOperator": null,
+            "options": []
+          },
+          {
+            "id": 20,
+            "name": "Curency",
+            "fieldId": "curency",
+            "fieldType": "enum",
+            "required": true,
+            "linkedOperator": null,
+            "options": [
+              {
+                "id": 39,
+                "value": "SGD",
+                "name": "SGD"
+              },
+              {
+                "id": 40,
+                "value": "USD",
+                "name": "USD"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "promotions": [
+    {
+      "promotionname": "promotion name 11",
+      "stackable": "false",
+      "promotionmodule": "promotion promo ",
+      "priority": "promotion pri ",
+      "startDate": "07/06/2024",
+      "endDate": "07/06/2024",
+      "conditions": [
+        {
+          "operators": "greaterThan",
+          "total_amount": 10
+        },
+        {
+          "category": "121"
+        }
+      ],
+      "actions": [
+        {
+          "cart_total_Discount": "100"
+        }
+      ],
+      "id": "c432"
+    },
+    {
+      "id": "c43122",
+      "templateInfo": {
+        "id": "Discount_For_Customer_Group",
+        "name": "Discount For Customer Group"
+      },
+      "promotionname": "promotion name",
+      "stackable": "false",
+      "promotionmodule": "promotion promo ",
+      "priority": "promotion pri ",
+      "startDate": "2024-06-26T00:00:00",
+      "endDate": "2024-06-29T00:00:00",
+      "category": {
+        "category": "4567"
+      },
+      "basic": {
+        "fields": [
+          {
+            "type": "posts",
+            "id": "promotionname",
+            "label": "Promotion Name",
+            "validationPattern": "",
+            "validationMessage": "Please enter a valid value",
+            "manditoryType": "required",
+            "fieldType": "text",
+            "defaultValue": "promotion name"
+          },
+          {
+            "type": "posts",
+            "id": "stackable",
+            "label": "Stackable",
+            "validationPattern": "",
+            "validationMessage": "",
+            "fieldType": "boolean",
+            "manditoryType": "required",
+            "defaultValue": "false"
+          },
+          {
+            "type": "posts",
+            "id": "promotionmodule",
+            "fieldType": "text",
+            "label": "Promotion Module",
+            "validationPattern": "^[A-Za-z0-9]+$",
+            "validationMessage": "Please enter a valid value",
+            "manditoryType": "required",
+            "defaultValue": "promotion promo "
+          },
+          {
+            "type": "posts",
+            "id": "priority",
+            "label": "Priority",
+            "validationPattern": "^[A-Za-z0-9]+$",
+            "validationMessage": "Please enter a valid value",
+            "manditoryType": "required",
+            "fieldType": "text",
+            "defaultValue": "promotion pri "
+          },
+          {
+            "type": "posts",
+            "id": "startDate",
+            "fieldType": "date",
+            "label": "Start Date",
+            "validationPattern": "^[A-Za-z0-9]+$",
+            "validationMessage": "Please enter a valid value",
+            "manditoryType": "",
+            "defaultValue": "07/06/2024"
+          },
+          {
+            "type": "posts",
+            "id": "endDate",
+            "fieldType": "date",
+            "label": "end Date",
+            "validationPattern": "^[A-Za-z0-9]+$",
+            "validationMessage": "Please enter a valid value",
+            "manditoryType": "",
+            "defaultValue": "07/06/2024"
+          }
+        ]
+      },
+      "rules": {
+        "fields": [
+          {
+            "id": "cart_total",
+            "label": "Cart Total",
+            "fields": [
+              {
+                "id": "operators",
+                "label": "Operators",
+                "fieldType": "select",
+                "subFields": [
+                  {
+                    "condition": "greaterThan",
+                    "conditionFields": [
+                      {
+                        "id": "total_amount",
+                        "label": "Total Amount",
+                        "fieldType": "text",
+                        "fieldOptions": [],
+                        "manditoryType": "required",
+                        "validationPattern": "^\\d*\\.?\\d+$",
+                        "validationMessage": "Please enter a valid value",
+                        "defaultValue": 10
+                      }
+                    ]
+                  },
+                  {
+                    "condition": "greaterThanEqual",
+                    "conditionFields": [
+                      {
+                        "id": "total_amount",
+                        "label": "Total Amount",
+                        "fieldType": "text",
+                        "fieldOptions": [],
+                        "manditoryType": "required",
+                        "validationPattern": "^\\d*\\.?\\d+$",
+                        "validationMessage": "Please enter a valid value",
+                        "defaultValue": 10
+                      }
+                    ]
+                  },
+                  {
+                    "condition": "between",
+                    "conditionFields": [
+                      {
+                        "id": "min_amount",
+                        "label": "Min Amount",
+                        "fieldType": "text",
+                        "fieldOptions": [],
+                        "manditoryType": "required",
+                        "validationPattern": "^\\d*\\.?\\d+$",
+                        "validationMessage": "Please enter a valid value",
+                        "defaultValue": 10
+                      },
+                      {
+                        "id": "max_amount",
+                        "label": "Max Amount",
+                        "fieldType": "text",
+                        "fieldOptions": [],
+                        "manditoryType": "required",
+                        "validationPattern": "^\\d*\\.?\\d+$",
+                        "validationMessage": "Please enter a valid value",
+                        "defaultValue": 12
+                      }
+                    ]
+                  }
+                ],
+                "fieldOptions": [
+                  {
+                    "value": "greaterThan",
+                    "title": ">"
+                  },
+                  {
+                    "value": "greaterThanEqual",
+                    "title": ">="
+                  },
+                  {
+                    "value": "between",
+                    "title": "between"
+                  }
+                ],
+                "manditoryType": "required",
+                "defaultValue": "greaterThan"
+              }
+            ],
+            "valueType": "string"
+          },
+          {
+            "id": "category",
+            "label": "Category",
+            "fields": [
+              {
+                "id": "category",
+                "label": "Category",
+                "fieldType": "text",
+                "manditoryType": "required",
+                "validationPattern": "^\\d*\\.?\\d+$",
+                "validationMessage": "Please enter a valid value",
+                "defaultValue": "default cat"
+              }
+            ],
+            "valueType": "string"
+          }
+        ]
+      },
+      "action": {
+        "fields": [
+          {
+            "id": "discount",
+            "label": "Discount",
+            "valueType": "string",
+            "fields": [
+              {
+                "id": "cart_total_Discount",
+                "label": "Discount",
+                "fieldType": "text",
+                "manditoryType": "required",
+                "validationPattern": "^\\d*\\.?\\d+$",
+                "validationMessage": "Please enter a valid value",
+                "defaultValue": "1001"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
